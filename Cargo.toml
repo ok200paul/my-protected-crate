@@ -1,0 +1,7 @@
+[package]
+name = "my-protected-crate"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+runlicense-sdk-rust = { git = "https://github.com/runlicense/sdk-rust" }
