@@ -1,13 +1,14 @@
-use runlicense_sdk::{verify_license, LicenseError};
+use my_protected_crate::ProtectedClient;
 
 fn main() {
-    match verify_license!("ok200paul/my-protected-crate") {
-        Ok(license) => {
-            println!("Licensed to: {}", license.customer_id);
-        }
+    let client = match ProtectedClient::new() {
+        Ok(client) => client,
         Err(e) => {
             eprintln!("License verification failed: {e}");
             std::process::exit(1);
         }
-    }
+    };
+
+    println!("Licensed to: {}", client.customer_id());
+    println!("{}", client.do_something());
 }
